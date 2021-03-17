@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  node-red:
+    image: amrc-factoryplus.***REMOVED***:5000/node-red:1.2.9
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - node-red-data:/data
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == amrc-factoryP-1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.nodered.rule=Host(`nodered.amrc-factoryplus.***REMOVED***`)"
+        - "traefik.docker.network=factory-plus"
+        - "traefik.http.services.nodered.loadbalancer.server.port=1880"
+        - "traefik.http.routers.nodered.tls=true"
+    networks:
+      - factory-plus
+volumes:
+  node-red-data:
+
+networks:
+  factory-plus:
+    external: true
+    name: factory-plus

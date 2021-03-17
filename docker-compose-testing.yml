@@ -1,0 +1,22 @@
+#############################################################
+# DO NOT USE THIS COMPOSE FILE FOR PRODUCTION
+# IT IS ONLY INTENDED FOR TESTING USE
+#############################################################
+version: "3.7"
+
+services:
+  node-red:
+    image: amrc-factoryplus.***REMOVED***:5000/node-red:1.2.9
+    ports:
+      - target: 1880
+        published: 1881
+        protocol: tcp
+        mode: host
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - node-red-data:/data
+
+volumes:
+  node-red-data:
+
