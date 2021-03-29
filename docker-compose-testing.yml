@@ -6,7 +6,7 @@ version: "3.7"
 
 services:
   node-red:
-    image: amrc-factoryplus.***REMOVED***:5000/node-red:1.2.9
+    image: amrc-factoryplus.<domain>:5000/node-red:1.2.9
     ports:
       - target: 1880
         published: 1881
